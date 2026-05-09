@@ -19,7 +19,7 @@ namespace SchoolProject.Data.Entites.Identity
         public DateTime? RevokedOn { get; set; }
         public bool IsExpired => DateTime.UtcNow >= ExpiresOn;
         public bool IsActive=> RevokedOn is null && !IsExpired;
-        public string? NewProperty { get; set; } // أضيف هذا السطر
+        public string? NewProperty { get; set; }
 
      
     }
