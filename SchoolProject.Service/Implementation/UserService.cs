@@ -61,17 +61,13 @@ namespace SchoolProject.Service.Implementation
 
         public async Task<Result> ResetPasswordConfirmationService(string email, string code)
         {
-            //check if email is not exist
             var user = await _userManager.FindByEmailAsync(email);
             if(user==null)
                 return Result.Failure(UserErrors.UserNotFound);
-            //check if code is vaild not expire
             if (DateTime.UtcNow > user.CodeExpireAt)
                 return Result.Failure<string>(AuthenticationErrors.ResetCodeExpired);
-            //check if code is used already
             if (user.CodeIsUsed)
                 return Result.Failure(AuthenticationErrors.ResetCodeAlreadyUsed);
-            //check if code is correct
             if (user.Code != code)
                 return Result.Failure(AuthenticationErrors.InvalidResetCode);
             user.CodeIsUsed = true;
@@ -83,7 +79,6 @@ namespace SchoolProject.Service.Implementation
 
         public async Task<Result> ResetPasswordConfirmationConfirmationService(string email, string NewPassword, string ConfirmPassword)
         {
-            //check if email is not exist
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null)
                 return Result.Failure(UserErrors.UserNotFound);
