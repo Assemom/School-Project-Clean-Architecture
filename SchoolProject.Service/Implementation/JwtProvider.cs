@@ -28,7 +28,7 @@ namespace SchoolProject.Service.Implementation
                 new(JwtRegisteredClaimNames.FamilyName,user.LastName),
                 new(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
                 new(nameof(roles),JsonSerializer.Serialize(roles),JsonClaimValueTypes.JsonArray),
-                new(nameof(permissions),JsonSerializer.Serialize(permissions),JsonClaimValueTypes.JsonArray)// id for token
+                new(nameof(permissions),JsonSerializer.Serialize(permissions),JsonClaimValueTypes.JsonArray)
                 ];
             var symmetricsecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Key));
             var signingCredentials = new SigningCredentials(symmetricsecurityKey, SecurityAlgorithms.HmacSha256);
@@ -49,13 +49,11 @@ namespace SchoolProject.Service.Implementation
         {
             try
             {
-                Console.WriteLine("------------------------");
                 Console.WriteLine($"Token to validate: {token}");
 
                 if (string.IsNullOrEmpty(token)) return null;
                 if (token.StartsWith("Bearer ")) token = token.Substring(7);
 
-                // الطريقة الآمنة - اقرأ الـ token من غير validation
                 var tokenHandler = new JwtSecurityTokenHandler();
 
                 if (!tokenHandler.CanReadToken(token))
@@ -66,15 +64,13 @@ namespace SchoolProject.Service.Implementation
 
                 var jwtToken = tokenHandler.ReadJwtToken(token);
 
-                // اطبع كل الـ claims عشان نتأكد
+                
                 Console.WriteLine("=== ALL CLAIMS IN TOKEN ===");
                 foreach (var claim in jwtToken.Claims)
                 {
                     Console.WriteLine($"{claim.Type}: {claim.Value}");
                 }
-                Console.WriteLine("===========================");
-
-                // إبحث عن الـ UserId
+            
                 var userId = jwtToken.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub)?.Value;
 
                 if (string.IsNullOrEmpty(userId))
@@ -83,12 +79,12 @@ namespace SchoolProject.Service.Implementation
                     return null;
                 }
 
-                Console.WriteLine($"✅ User ID extracted: {userId}");
+                Console.WriteLine($"User ID extracted: {userId}");
                 return userId;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Token reading error: {ex.Message}");
+                Console.WriteLine($"Token reading error: {ex.Message}");
                 return null;
             }
         }
