@@ -8,10 +8,7 @@ namespace SchoolProject.Infrastructure.Data
         public ApplicationDBContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDBContext>();
-
-            // حط نفس connection string اللي في appsettings.json
-            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;Database=SchoolProjectCleanArchitecture;Trusted_Connection=True;Encrypt=False");
-
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;Database=SchoolProject;Trusted_Connection=True;Encrypt=False");
             return new ApplicationDBContext(optionsBuilder.Options);
         }
     }
