@@ -25,8 +25,8 @@ namespace SchoolProject.Infrastructure.Context.Configurations
                     new User
                     {
                         Id = DefaultUsers.AdminId,
-                        FirstName = "Plant-Project",
-                        LastName = "Admin",
+                        FirstName = "SchoolProject",
+                        LastName = "USER",
                         UserName = DefaultUsers.AdminUserName,
                         NormalizedUserName = DefaultUsers.AdminEmail.ToUpper(),
                         Email = DefaultUsers.AdminEmail,
@@ -35,8 +35,8 @@ namespace SchoolProject.Infrastructure.Context.Configurations
                         ConcurrencyStamp = DefaultUsers.AdminConcurrencyStamp,
                         EmailConfirmed = true,
                         PhoneNumberConfirmed = true,
-                        PhoneNumber="01205024661",
-                        PasswordHash = "AQAAAAIAAYagAAAAEES76XCzEAJzOKK3RHphtyNuJc52FtrqMqoDuSoo921MiNJ/llOGYPXIq92thIuxvg=="
+                        PhoneNumber="01096917704",
+                        PasswordHash = "JJJSBFJHSFGWYHYJSBFKSNKMSLFOKNFS_+++++=====MJWHVGDVGWDHWDJJWDJWJDBWHDGDVWVYDVHVHVDHVHWHDHHHHBHB"
 
                     });
         }
