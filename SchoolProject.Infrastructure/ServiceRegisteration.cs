@@ -29,7 +29,7 @@
 
                    // User settings.
                    option.User.AllowedUserNameCharacters =
-                   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                   "fmdnjsbjfsfnkjsdnfjnsekfnkjdshbyefysefkjslmslrmgoro5849859438534909ignkfnkgdgfdgf";
                    option.User.RequireUniqueEmail = true;
                    option.SignIn.RequireConfirmedEmail = true;
                }).AddEntityFrameworkStores<ApplicationDBContext>()
