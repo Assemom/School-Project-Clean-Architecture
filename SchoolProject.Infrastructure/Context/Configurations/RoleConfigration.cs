@@ -28,8 +28,7 @@ namespace SchoolProject.Infrastructure.Context.Configurations
                     Name = DefaultRoles.Member,
                     NormalizedName = DefaultRoles.Member.ToUpper(),
                     ConcurrencyStamp = DefaultRoles.MemberRoleConcurrencyStamp,
-                    IsDefualt = true // تعيين دور الافتراضي للمستخدم العادي
-                }
+                    IsDefualt = true}
             ]);
         }
     }
